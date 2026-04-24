@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de misión — demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="glow glow-a" aria-hidden="true"></div>
+    <div class="glow glow-b" aria-hidden="true"></div>
+
+    <header class="top">
+        <div class="brand">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <div>
+                <h1>Control de misión</h1>
+                <p class="subtitle">Dron / robot — patrón de estados en el backend Java</p>
+            </div>
+        </div>
+        <button type="button" class="btn ghost" id="refreshBtn">Actualizar estado</button>
+    </header>
+
+    <main class="layout">
+        <section class="panel hero" aria-labelledby="stateTitle">
+            <h2 id="stateTitle" class="sr-only">Estado actual</h2>
+            <div class="state-ring" id="stateRing">
+                <div class="state-core">
+                    <span class="label">Modo de vuelo</span>
+                    <p class="state-name" id="stateLabel">—</p>
+                    <p class="state-id mono" id="stateId">—</p>
+                </div>
+            </div>
+            <p class="hint" id="stateHint">Cargando…</p>
+        </section>
+
+        <section class="panel" aria-labelledby="actionsTitle">
+            <div class="panel-head">
+                <h2 id="actionsTitle">Acciones disponibles</h2>
+                <span class="badge" id="actionCount">0</span>
+            </div>
+            <p class="muted">Solo se muestran eventos válidos para el modo actual (reglas del backend).</p>
+            <div class="actions" id="actions"></div>
+        </section>
+
+        <section class="panel wide" aria-labelledby="logTitle">
+            <div class="panel-head">
+                <h2 id="logTitle">Registro</h2>
+                <button type="button" class="btn tiny ghost" id="clearLogBtn">Limpiar</button>
+            </div>
+            <ol class="log" id="log"></ol>
+        </section>
+
+        <section class="panel wide flow" aria-labelledby="flowTitle">
+            <h2 id="flowTitle" class="panel-title">Flujo típico</h2>
+            <ol class="steps">
+                <li>En tierra → Iniciar comprobaciones</li>
+                <li>Comprobaciones → Correctas / Fallidas (o abortar)</li>
+                <li>Listo para armar → Armar / Abortar</li>
+                <li>Armado → Despegar / Desarmar / Emergencia</li>
+                <li>En vuelo → RTL / Aterrizaje / Emergencia</li>
+                <li>RTL o Emergencia → Aterrizaje completado → En tierra</li>
+            </ol>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <span>API: <code class="mono">GET/POST /api/flight</code></span>
+        <span class="muted">Identificadores técnicos en inglés; interfaz en español.</span>
+    </footer>
+
+    <script src="/app.js" defer></script>
+</body>
+</html>
