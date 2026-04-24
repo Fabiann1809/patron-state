@@ -19,7 +19,7 @@
             <span class="brand-mark" aria-hidden="true"></span>
             <div>
                 <h1>Control de misión</h1>
-                <p class="subtitle">Dron / robot — patrón de estados en el backend Java</p>
+                <p class="subtitle">Sistema de control y supervisión de vuelo</p>
             </div>
         </div>
         <button type="button" class="btn ghost" id="refreshBtn">Actualizar estado</button>
@@ -32,7 +32,7 @@
                 <div class="state-core">
                     <span class="label">Modo de vuelo</span>
                     <p class="state-name" id="stateLabel">—</p>
-                    <p class="state-id mono" id="stateId">—</p>
+                    <p class="state-id" id="stateId" style="display:none;">—</p>
                 </div>
             </div>
             <p class="hint" id="stateHint">Cargando…</p>
@@ -43,7 +43,7 @@
                 <h2 id="actionsTitle">Acciones disponibles</h2>
                 <span class="badge" id="actionCount">0</span>
             </div>
-            <p class="muted">Solo se muestran eventos válidos para el modo actual (reglas del backend).</p>
+            <p class="muted">Se muestran las acciones disponibles según el modo actual.</p>
             <div class="actions" id="actions"></div>
         </section>
 
@@ -62,15 +62,14 @@
                 <li>Comprobaciones → Correctas / Fallidas (o abortar)</li>
                 <li>Listo para armar → Armar / Abortar</li>
                 <li>Armado → Despegar / Desarmar / Emergencia</li>
-                <li>En vuelo → RTL / Aterrizaje / Emergencia</li>
-                <li>RTL o Emergencia → Aterrizaje completado → En tierra</li>
+                <li>En vuelo → Regreso automático / Aterrizaje / Emergencia</li>
+                <li>Regreso o Emergencia → Aterrizaje completado → En tierra</li>
             </ol>
         </section>
     </main>
 
     <footer class="foot">
-        <span>API: <code class="mono">GET/POST /api/flight</code></span>
-        <span class="muted">Identificadores técnicos en inglés; interfaz en español.</span>
+        <span class="muted">Control de misión · Sistema de vuelo autónomo</span>
     </footer>
 
     <script src="/app.js" defer></script>

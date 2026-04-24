@@ -6,7 +6,7 @@ const STATE_LABELS_ES = {
     READY_TO_ARM: "Listo para armar",
     ARMED: "Armado",
     FLYING: "En vuelo",
-    RTL: "Regreso al inicio (RTL)",
+    RTL: "Regreso automático",
     EMERGENCY: "Emergencia",
 };
 
@@ -17,7 +17,7 @@ const EVENT_LABELS_ES = {
     ARM: "Armar",
     DISARM: "Desarmar",
     TAKEOFF: "Despegar",
-    REQUEST_RTL: "Activar RTL",
+    REQUEST_RTL: "Regresar al inicio",
     LAND_COMPLETE: "Aterrizaje completado",
     EMERGENCY_TRIGGER: "Emergencia",
 };
@@ -31,20 +31,20 @@ const MESSAGE_LABELS_ES = {
     DISARMED: "Desarmado.",
     TAKEOFF_COMPLETE: "Despegue completado.",
     EMERGENCY_ACTIVE: "Emergencia activada.",
-    RTL_ENGAGED: "RTL activado.",
+    RTL_ENGAGED: "Regreso automático activado.",
     LANDED_DISARMED: "Aterrizaje completado. En tierra.",
-    RTL_LANDED_DISARMED: "RTL finalizado. Sistema en tierra.",
+    RTL_LANDED_DISARMED: "Regreso finalizado. Sistema en tierra.",
     EMERGENCY_RESOLVED_ON_GROUND: "Emergencia resuelta. En tierra.",
     INVALID_TRANSITION: "Acción no permitida en este modo.",
 };
 
 const STATE_HINTS_ES = {
     GROUND: "Motores sin autorización de vuelo. Inicia comprobaciones para continuar.",
-    PREFLIGHT_CHECKS: "IMU, GPS, batería y reglas de seguridad. Marca el resultado o aborta.",
+    PREFLIGHT_CHECKS: "Verificando sensores, batería y sistemas de seguridad.",
     READY_TO_ARM: "Comprobaciones superadas. Arma el sistema para continuar o aborta si es necesario.",
     ARMED: "Listo para despegar. Puedes desarmar o declarar emergencia.",
-    FLYING: "Misión o vuelo manual. RTL, aterrizaje o emergencia según procedimiento.",
-    RTL: "Regreso automático al punto de inicio. Completa el aterrizaje cuando corresponda.",
+    FLYING: "En misión o vuelo manual. Puedes regresar al inicio, aterrizar o declarar emergencia.",
+    RTL: "Regresando automáticamente al punto de inicio. Completa el aterrizaje cuando corresponda.",
     EMERGENCY: "Prioridad máxima. Completa el aterrizaje forzado y confirma en tierra.",
 };
 
@@ -146,5 +146,5 @@ els.clearLogBtn.addEventListener("click", () => {
 });
 
 refreshStatus().catch(() => {
-    els.stateHint.textContent = "No se pudo cargar el estado. ¿Está arrancado el servidor Java?";
+    els.stateHint.textContent = "No se pudo cargar el estado. Verifica que el servidor esté en ejecución.";
 });
